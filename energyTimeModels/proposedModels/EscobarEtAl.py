@@ -270,7 +270,7 @@ class EscobarEtAl(EnergyTimeModel):
         numClockCycles = params['W_'+i+'_'+j]
         frequency = self.data['F_'+i+'_'+j]
 
-        numIndSubp = (numTotalInd / numTotalSubpop) * (1 + crossRate)
+        numIndSubp = (numTotalInd / numTotalSubpop)# * (1 + crossRate)
         if numActCores > 0:
             runtime = numGenerations * numSubpop * \
                       (math.ceil(numIndSubp / numActCores)) * \
