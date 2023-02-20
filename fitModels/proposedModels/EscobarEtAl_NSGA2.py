@@ -86,10 +86,11 @@ class EscobarEtAl_NSG2(FitModel):
         resultingPop.sort(key=lambda x: x.fitness.values[0])
         bestIndividualEnergy = resultingPop[0]
 
-        bestIndividualTimeEnergy = bestIndividualEnergy + bestIndividualTime
+        bestIndividualEnergyTime = bestIndividualEnergy + bestIndividualTime
         results =  {
-            'bestIndividual': model.denormalizeParams(bestIndividualTimeEnergy),
-            'bestFitness': self.computeFitness(model, bestIndividualTimeEnergy, areParamsNorm=True)
+            'bestIndividual': model.denormalizeParams(model.paramsListToDict(bestIndividualEnergyTime, energyParameters=True,
+                                                                   timeParameters=True)),
+            'bestFitness': self.computeFitness(model, bestIndividualEnergyTime, areParamsNorm=True)
         }
         return results
 
